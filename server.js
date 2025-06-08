@@ -4,6 +4,7 @@ import { connectDatabase } from "./config/database.js";
 import morgan from "morgan";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import userRouter from "./routes/userRoute.js";
 
 // dotenv config
 dotenv.config();
@@ -28,13 +29,9 @@ app.use(
 connectDatabase();
 
 // routes
-
-app.get("/", (req, res) => {
-  res.send("This is My First Backend App");
-  console.log("This is a node app...");
-});
+app.use("/api/user", userRouter);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
-  console.log(`Server is Running on PORT ${PORT}`);
+  console.log(`Server is Running on PORT : ${PORT}`);
 });
