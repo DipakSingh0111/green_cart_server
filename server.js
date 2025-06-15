@@ -5,6 +5,7 @@ import morgan from "morgan";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import userRouter from "./routes/userRoute.js";
+import sellerRoute from "./routes/sellerRoute.js";
 
 // dotenv config
 dotenv.config();
@@ -30,6 +31,7 @@ connectDatabase();
 
 // routes
 app.use("/api/user", userRouter);
+app.use("/api/seller", sellerRoute);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
